@@ -25,7 +25,74 @@ const IndexPage = () => {
     navigate('/shop');
   };
   
+<script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a fonte Inter para todo o corpo */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f8ff; /* Um azul muito claro para o fundo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px; /* Adiciona um pouco de padding para telas menores */
+            box-sizing: border-box;
+        }
+        /* Estilo para o contêiner principal */
+        .container {
+            background-color: #ffffff; /* Fundo branco para o conteúdo */
+            border-radius: 1.5rem; /* Cantos mais arredondados */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            padding: 2.5rem; /* Padding interno */
+            text-align: center;
+            max-width: 600px; /* Largura máxima para o conteúdo */
+            width: 100%; /* Garante que ocupe a largura total disponível */
+        }
+        /* Estilos para o título */
+        h1 {
+            color: #2c5282; /* Um azul mais escuro para o título */
+            font-size: 2.5rem; /* Tamanho da fonte grande */
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        /* Estilos para o subtítulo/mensagem */
+        p {
+            color: #4a5568; /* Cor de texto padrão */
+            font-size: 1.125rem; /* Tamanho da fonte para o parágrafo */
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+        /* Estilo para o nome da loja */
+        .store-name {
+            color: #3182ce; /* Um azul vibrante para o nome da loja */
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        /* Estilo para o produto/nicho */
+        .product-niche {
+            color: #63b3ed; /* Um azul mais claro para o nicho */
+            font-style: italic;
+        }
+        /* Estilo para o ícone de estrela */
+        .star-icon {
+            color: #f6ad55; /* Cor de estrela amarela/laranja */
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
 
+        /* Responsividade para telas menores */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem; /* Reduz o tamanho do título em telas pequenas */
+            }
+            p {
+                font-size: 1rem; /* Reduz o tamanho do parágrafo em telas pequenas */
+            }
+            .container {
+                padding: 1.5rem; /* Reduz o padding em telas pequenas */
+            }
+        }
   return (
     <Layout disablePaddingBottom>
 
@@ -46,22 +113,6 @@ const IndexPage = () => {
             Agradecemos a sua paciência e entusiasmo!
         </p>
     </div>
-
-     
-
-      {/* Social Media */}
-      <div className={styles.socialContainer}>
-        <Title
-          name={'Styled by You'}
-          subtitle={'Tag @sydney to be featured.'}
-        />
-        <div className={styles.socialContentGrid}>
-          <img src={toOptimizedImage(`/social/socialMedia1.png`)} alt={'social media 1'} />
-          <img src={toOptimizedImage(`/social/socialMedia2.png`)} alt={'social media 2'} />
-          <img src={toOptimizedImage(`/social/socialMedia3.png`)} alt={'social media 3'} />
-          <img src={toOptimizedImage(`/social/socialMedia4.png`)} alt={'social media 4'} />
-        </div>
-      </div>
       <AttributeGrid />
     </Layout>
   );

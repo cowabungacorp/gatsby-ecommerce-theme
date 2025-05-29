@@ -1,148 +1,95 @@
-import * as React from 'react';
-
-import AttributeGrid from '../components/AttributeGrid';
-import Container from '../components/Container';
-import Hero from '../components/Hero';
-import BlogPreviewGrid from '../components/BlogPreviewGrid';
-import Highlight from '../components/Highlight';
-import Layout from '../components/Layout/Layout';
-import ProductCollectionGrid from '../components/ProductCollectionGrid';
-import ProductCardGrid from '../components/ProductCardGrid';
-import Quote from '../components/Quote';
-import Title from '../components/Title';
-
-import { generateMockBlogData, generateMockProductData } from '../helpers/mock';
-
-import * as styles from './index.module.css';
-import { Link, navigate } from 'gatsby';
-import { toOptimizedImage } from '../helpers/general';
-
-const IndexPage = () => {
-  const newArrivals = generateMockProductData(3, 'shirt');
-  const blogData = generateMockBlogData(3);
-
-  const goToShop = () => {
-    navigate('/shop');
-  };
-
-  return (
-    <Layout disablePaddingBottom>
-      {/* Hero Container */}
-      <Hero
-        maxWidth={'500px'}
-        image={'/banner1.png'}
-        title={'Essentials for a cold winter'}
-        subtitle={'Discover Autumn Winter 2021'}
-        ctaText={'shop now'}
-        ctaAction={goToShop}
-      />
-
-      {/* Message Container */}
-      <div className={styles.messageContainer}>
-        <p>
-          This is a demonstration of the Sydney theme for verse by{' '}
-          <span className={styles.gold}>matter design.</span>
-        </p>
-        <p>
-          wear by <span className={styles.gold}>sunspel</span> and{' '}
-          <span className={styles.gold}>scotch&soda</span>
-        </p>
-      </div>
-
-      {/* Collection Container */}
-      <div className={styles.collectionContainer}>
-        <Container size={'large'}>
-          <Title name={'New Collection'} />
-          <ProductCollectionGrid />
-        </Container>
-      </div>
-
-      {/* New Arrivals */}
-      <div className={styles.newArrivalsContainer}>
-        <Container>
-          <Title name={'New Arrivals'} link={'/shop'} textLink={'view all'} />
-          <ProductCardGrid
-            spacing={true}
-            showSlider
-            height={480}
-            columns={3}
-            data={newArrivals}
-          />
-        </Container>
-      </div>
-
-      {/* Highlight  */}
-      <div className={styles.highlightContainer}>
-        <Container size={'large'} fullMobile>
-          <Highlight
-            image={'/highlight.png'}
-            altImage={'highlight image'}
-            miniImage={'/highlightmin.png'}
-            miniImageAlt={'mini highlight image'}
-            title={'Luxury Knitwear'}
-            description={`This soft lambswool jumper is knitted in Scotland, using yarn from one of the world's oldest spinners based in Fife`}
-            textLink={'shop now'}
-            link={'/shop'}
-          />
-        </Container>
-      </div>
-
-      {/* Promotion */}
-      <div className={styles.promotionContainer}>
-        <Hero image={toOptimizedImage('/banner2.png')} title={`-50% off \n All Essentials`} />
-        <div className={styles.linkContainers}>
-          <Link to={'/shop'}>WOMAN</Link>
-          <Link to={'/shop'}>MAN</Link>
-        </div>
-      </div>
-
-      {/* Quote */}
-      <Quote
-        bgColor={'var(--standard-light-grey)'}
-        title={'about Sydney'}
-        quote={
-          '“We believe in two things: the pursuit of quality in everything we do, and looking after one another. Everything else should take care of itself.”'
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulsar Azul - Em Breve!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a fonte Inter para todo o corpo */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f8ff; /* Um azul muito claro para o fundo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px; /* Adiciona um pouco de padding para telas menores */
+            box-sizing: border-box;
         }
-      />
+        /* Estilo para o contêiner principal */
+        .container {
+            background-color: #ffffff; /* Fundo branco para o conteúdo */
+            border-radius: 1.5rem; /* Cantos mais arredondados */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            padding: 2.5rem; /* Padding interno */
+            text-align: center;
+            max-width: 600px; /* Largura máxima para o conteúdo */
+            width: 100%; /* Garante que ocupe a largura total disponível */
+        }
+        /* Estilos para o título */
+        h1 {
+            color: #2c5282; /* Um azul mais escuro para o título */
+            font-size: 2.5rem; /* Tamanho da fonte grande */
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        /* Estilos para o subtítulo/mensagem */
+        p {
+            color: #4a5568; /* Cor de texto padrão */
+            font-size: 1.125rem; /* Tamanho da fonte para o parágrafo */
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+        /* Estilo para o nome da loja */
+        .store-name {
+            color: #3182ce; /* Um azul vibrante para o nome da loja */
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        /* Estilo para o produto/nicho */
+        .product-niche {
+            color: #63b3ed; /* Um azul mais claro para o nicho */
+            font-style: italic;
+        }
+        /* Estilo para o ícone de estrela */
+        .star-icon {
+            color: #f6ad55; /* Cor de estrela amarela/laranja */
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
 
-      {/* Blog Grid */}
-      <div className={styles.blogsContainer}>
-        <Container size={'large'}>
-          <Title name={'Journal'} subtitle={'Notes on life and style'} />
-          <BlogPreviewGrid data={blogData} />
-        </Container>
-      </div>
-
-      {/* Promotion */}
-      <div className={styles.sustainableContainer}>
-        <Hero
-          image={toOptimizedImage('/banner3.png')}
-          title={'We are Sustainable'}
-          subtitle={
-            'From caring for our land to supporting our people, discover the steps we’re taking to do more for the world around us.'
-          }
-          ctaText={'read more'}
-          maxWidth={'660px'}
-          ctaStyle={styles.ctaCustomButton}
-        />
-      </div>
-
-      {/* Social Media */}
-      <div className={styles.socialContainer}>
-        <Title
-          name={'Styled by You'}
-          subtitle={'Tag @sydney to be featured.'}
-        />
-        <div className={styles.socialContentGrid}>
-          <img src={toOptimizedImage(`/social/socialMedia1.png`)} alt={'social media 1'} />
-          <img src={toOptimizedImage(`/social/socialMedia2.png`)} alt={'social media 2'} />
-          <img src={toOptimizedImage(`/social/socialMedia3.png`)} alt={'social media 3'} />
-          <img src={toOptimizedImage(`/social/socialMedia4.png`)} alt={'social media 4'} />
-        </div>
-      </div>
-      <AttributeGrid />
-    </Layout>
-  );
-};
-
-export default IndexPage;
+        /* Responsividade para telas menores */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem; /* Reduz o tamanho do título em telas pequenas */
+            }
+            p {
+                font-size: 1rem; /* Reduz o tamanho do parágrafo em telas pequenas */
+            }
+            .container {
+                padding: 1.5rem; /* Reduz o padding em telas pequenas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="star-icon">★</div>
+        <h1>Estamos Quase Lá!</h1>
+        <p>
+            Prepare-se para uma experiência incrível! A <span class="store-name">Pulsar Azul</span>
+            está chegando com uma seleção especial de <span class="product-niche">produtos autistas</span>
+            cuidadosamente pensados para trazer conforto, desenvolvimento e alegria.
+        </p>
+        <p>
+            Estamos trabalhando duro para que tudo esteja perfeito. Em breve, você terá acesso a um universo de
+            possibilidades. Fique de olho!
+        </p>
+        <p class="text-sm text-gray-500 mt-4">
+            Agradecemos a sua paciência e entusiasmo!
+        </p>
+    </div>
+</body>
+</html>

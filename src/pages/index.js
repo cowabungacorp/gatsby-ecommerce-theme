@@ -80,7 +80,7 @@
         <h1>Estamos Quase Lá!</h1>
         <p>
             Prepare-se para uma experiência incrível! A <span class="store-name">Pulsar Azul</span>
-            está chegando com uma seleção especial de <span class="product-niche">produtos autistas</span>
+            está chegando com uma seleção especial de <span class="product-niche">produtos</span>
             cuidadosamente pensados para trazer conforto, desenvolvimento e alegria.
         </p>
         <p>
